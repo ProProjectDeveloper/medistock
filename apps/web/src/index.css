@@ -1,0 +1,38 @@
+@import '@medistock/tokens/tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  h1, h2, h3 { @apply font-display; line-height: 1.15; letter-spacing: -0.01em; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+  ::selection { background: var(--brand-tint); }
+  /* Grid children may shrink below their content width, so long rows truncate instead of widening the page. */
+  .grid > * { min-width: 0; }
+  input, select, textarea, button { font: inherit; color: inherit; }
+}
+
+@layer components {
+  .label { @apply text-xs font-semibold uppercase tracking-[0.06em] text-ink-2; }
+  .num { @apply font-mono; font-variant-numeric: tabular-nums; }
+  .card { @apply bg-surface border border-line rounded-md; }
+  .input {
+    @apply h-10 w-full rounded-sm border border-line bg-surface px-3 text-[15px] text-ink placeholder:text-ink-3
+      transition-colors duration-150 hover:border-ink-3 focus:border-brand focus:outline-none;
+  }
+  .input[aria-invalid='true'] { @apply border-expired; }
+  .link { @apply text-brand underline-offset-2 hover:underline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.animate-rise { animation: rise 200ms cubic-bezier(.2,.7,.2,1) both; }
