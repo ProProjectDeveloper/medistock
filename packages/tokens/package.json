@@ -1,0 +1,13 @@
+{
+  "name": "@medistock/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "index.ts",
+  "types": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./tokens.css": "./tokens.css",
+    "./tokens.json": "./tokens.json"
+  }
+}
